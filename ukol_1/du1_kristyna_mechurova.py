@@ -2,22 +2,22 @@ import math
 """program pro vypocet polohy jednotlivych poledniku a rovnobezek v danem zobrazeni"""
 
 
-#osetreni polomeru
 def zadani_osetreni_polomeru():
+    """Vyzada od uzivatele polomer a osetri pripadne chybne vstupy, pro hodnotu 0 je polomer definovany 6371.11km."""
     while True:
-        polomerstr = input("zadej R v km:")
+        polomerstr = input("zadej polomer v km:")
         R = float(polomerstr)
         if R <0:
-            print("chybne zadany R")
+            print("chybne zadany polomer - zadejte kladne cislo")
         elif R ==0:
             return 6371.11*10000
         else:
             return R*10000
 
 
-
 #osetreni meritka
 def zadani_osetreni_meritka():
+    """Vyzada od uzivatele meritka v pomeru 1:x(x=zadana hodnota meritka) a osetri pripadne chybne vstupy."""
     while True:
         meritkostr = input("zadej meritko:")
         try:
@@ -34,6 +34,7 @@ def zadani_osetreni_meritka():
 
 #osetreni zadani pismene pro zobrazeni
 def zadani_osetreni_pismeneproZobr():
+    """Vyzada od uzivatele druh zobrazeni, osetri pripadne chybne vstupy."""
     while True:
         zobrazeni = input("zadej pismeno A,B,M nebo L: ")
         if zobrazeni == "A" or zobrazeni == "B" or zobrazeni == "M" or zobrazeni == "L":
@@ -46,6 +47,8 @@ def zadani_osetreni_pismeneproZobr():
 #vypocet poledniku
 
 def vypocet_poledniku (R,m):
+    """Vytvori list poledniku po deseti stupnich a prazdny list, do ktereho se budou zapisovat vypocty. Provede vypocet poledniku,
+    pokud jsou hodnoty vyssi nez jeden metr vrati hodnotu: - ."""
     v = [i for i in range(-180, 190, 10)]
     poledniky = []
     for i in v:
@@ -58,9 +61,10 @@ def vypocet_poledniku (R,m):
     return poledniky
 
 
-
 #vypocet rovnobezek
 def vypocet_rovnobezek(R,m,zobrazeni):
+    """Vytvori list rovnobezek po deseti stupnich a prazdny list, do ktereho se budou zapisovat vypocty. Provede vypocet rovnobezek,
+    v zavislosti na definovanem zobrazeni, pokud jsou hodnoty vyssi nez jeden metr vrati hodnotu: - ."""
     u = [i for i in range(-90, 100, 10)]
     rovnobezky = []
     v = [i for i in range(-180,190,10)]
@@ -87,6 +91,7 @@ def vypocet_rovnobezek(R,m,zobrazeni):
         rovnobezky.append(y)
     return rovnobezky
 
+#volani funkci
 R = zadani_osetreni_polomeru()
 m=zadani_osetreni_meritka()
 zobrazeni=zadani_osetreni_pismeneproZobr()
