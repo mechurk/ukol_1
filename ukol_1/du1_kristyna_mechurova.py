@@ -15,7 +15,6 @@ def zadani_osetreni_polomeru():
             return R*10000
 
 
-#osetreni meritka
 def zadani_osetreni_meritka():
     """Vyzada od uzivatele meritka v pomeru 1:x(x=zadana hodnota meritka) a osetri pripadne chybne vstupy."""
     while True:
@@ -32,7 +31,6 @@ def zadani_osetreni_meritka():
 
 
 
-#osetreni zadani pismene pro zobrazeni
 def zadani_osetreni_pismeneproZobr():
     """Vyzada od uzivatele druh zobrazeni, osetri pripadne chybne vstupy."""
     while True:
@@ -42,9 +40,6 @@ def zadani_osetreni_pismeneproZobr():
         else:
             print("nespravne zadane pismeno")
 
-
-
-#vypocet poledniku
 
 def vypocet_poledniku (R,m):
     """Vytvori list poledniku po deseti stupnich a prazdny list, do ktereho se budou zapisovat vypocty. Provede vypocet poledniku,
@@ -91,12 +86,14 @@ def vypocet_rovnobezek(R,m,zobrazeni):
         rovnobezky.append(y)
     return rovnobezky
 
+
 #volani funkci
 R = zadani_osetreni_polomeru()
 m=zadani_osetreni_meritka()
 zobrazeni=zadani_osetreni_pismeneproZobr()
 poledniky=vypocet_poledniku (R,m)
 rovnobezky=vypocet_rovnobezek(R,m,zobrazeni)
+
 
 #vypsani poledniku a rovnobezek
 print ("Rovnobezky:",rovnobezky)
