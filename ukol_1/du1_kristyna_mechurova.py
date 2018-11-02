@@ -76,7 +76,6 @@ for i in u:
         y="-"
     rovnobezky.append(y)
 
-
 #vypsani poledniku a rovnobezek
 print ("Rovnobezky:",rovnobezky)
 print ("Poledniky:",poledniky)
