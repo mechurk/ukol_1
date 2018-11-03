@@ -5,9 +5,9 @@ Program pro výpočet polohy jednotlivých poledníků a rovnoběžek v daném z
 Program provede výpočet souřadnic poledníků a rovnoběžek pro zvolené zobrazení, měřítko a poloměr Země. Vypíše, na jakých souřadnicích na papíře se dané poledníky a rovnoběžky nacházejí.
 
 Vstupní parametry: 
-   Měřítko:      nutné zadat celočíselný, kladný formát čísla x, který bude odpovídat měřítku 1:x
+   Měřítko:      nutné zadat celočíselný, kladný formát čísla x, který bude odpovídat měřítku 1:x.
    Zobrazení:    program může provádět vypočet souřadnic na čtyřech různých zobrazeních. Je nutné zadat, pro které zobrazení se mají
-                 rovnoběžky a poledníky počítat (možnosti: L-Lambert,A-Marini,B-Braun,M-Mercator)
+                 rovnoběžky a poledníky počítat (možnosti: L-Lambert,A-Marini,B-Braun,M-Mercator).
    Poloměr Země: nutný kladný formát čísla, poloměr se udává v kilometrech, pokud uživatel zadá hodnotu 0 program bude počítat s poloměrem                  6371.11 km.
    
 Výstupní  parametry:
