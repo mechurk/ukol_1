@@ -3,8 +3,7 @@ import math
 
 
 def zadani_osetreni_polomeru():
-    """Vyzada od uzivatele polomer a osetri pripadne chybne vstupy, pro hodnotu 0 je polomer definovany 6371.11km.
-    Vystupem je polomer osetreny od chyb"""
+    """Vyzada od uzivatele polomer, pro hodnotu 0 je polomer definovany 6371.11km. Vystupem je polomer osetreny od chyb"""
     while True:
         polomerstr = input("zadej polomer v km:")
         R = float(polomerstr)
@@ -17,8 +16,7 @@ def zadani_osetreni_polomeru():
 
 
 def zadani_osetreni_meritka():
-    """Vyzada od uzivatele meritka v pomeru 1:x(x=zadana hodnota meritka) a osetri pripadne chybne vstupy.
-    Vystupem je meritko ostetrene od chyb"""
+    """Vyzada od uzivatele hodnotu meritka.Vystupem je meritko ostetrene od chyb"""
     while True:
         meritkostr = input("zadej meritko:")
         try:
@@ -34,19 +32,17 @@ def zadani_osetreni_meritka():
 
 
 def zadani_osetreni_pismeneproZobr():
-    """Vyzada od uzivatele druh zobrazeni, osetri pripadne chybne vstupy.Vystupem funkce je definice daneho zobrazeni."""
+    """Vyzada od uzivatele druh zobrazeni. Vystupem funkce je definice daneho zobrazeni."""
     while True:
         zobrazeni = input("zadej pismeno A,B,M nebo L: ")
-        if zobrazeni == "A" or zobrazeni == "B" or zobrazeni == "M" or zobrazeni == "L":
+        if zobrazeni in ("A","B","M","L"):
             return zobrazeni
         else:
             print("nespravne zadane pismeno")
 
 
 def vypocet_poledniku (R,m):
-    """Vytvori list poledniku po deseti stupnich a prazdny list, do ktereho se budou zapisovat vypocty. Provede vypocet poledniku,
-    pokud jsou hodnoty vyssi nez jeden metr vrati hodnotu: - . Vstupem funkce je meritko a polomer, vystupem je list souradnic poledniku po
-    deseti stupnich."""
+    """ Vstupem funkce je meritko a polomer, vystupem je list souradnic poledniku po deseti stupnich."""
     v = [i for i in range(-180, 190, 10)]
     poledniky = []
     for i in v:
@@ -61,9 +57,7 @@ def vypocet_poledniku (R,m):
 
 #vypocet rovnobezek
 def vypocet_rovnobezek(R,m,zobrazeni):
-    """Vytvori list rovnobezek po deseti stupnich a prazdny list, do ktereho se budou zapisovat vypocty. Provede vypocet rovnobezek,
-    v zavislosti na definovanem zobrazeni, pokud jsou hodnoty vyssi nez jeden metr vrati hodnotu: - .Vstupem funkce je meritko a polomer,
-     vystupem je list souradnic rovnobezek po deseti stupnich."""
+    """.Vstupem funkce je meritko a polomer, vystupem je list souradnic rovnobezek po deseti stupnich."""
     u = [i for i in range(-90, 100, 10)]
     rovnobezky = []
     v = [i for i in range(-180,190,10)]
@@ -77,7 +71,7 @@ def vypocet_rovnobezek(R,m,zobrazeni):
             y=(2*R*math.tan(i/2*math.pi/180))/m
         elif zobrazeni=="M":
             if abs(i)==90:
-                y='-' #pol se nezobrazuje
+                y=float("inf") #pol se nezobrazuje
             else:
                 y=(R*math.log(math.tan(((i/2)+45)* math.pi / 180)))/m
 
