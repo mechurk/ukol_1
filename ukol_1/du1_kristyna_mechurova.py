@@ -57,7 +57,7 @@ def vypocet_poledniku (R,m):
 
 #vypocet rovnobezek
 def vypocet_rovnobezek(R,m,zobrazeni):
-    """.Vstupem funkce je meritko a polomer, vystupem je list souradnic rovnobezek po deseti stupnich."""
+    """Vstupem funkce je meritko a polomer, vystupem je list souradnic rovnobezek po deseti stupnich."""
     u = [i for i in range(-90, 100, 10)]
     rovnobezky = []
     v = [i for i in range(-180,190,10)]
