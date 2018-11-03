@@ -23,6 +23,6 @@ Výstupní  parametry:
    
    
 Běh programu:
-   Nejprve jsou od uživatele vyžádany všechny vstupní parametry a jsou hned ošetřeny před případnými chybami. Pokud uživatel zadá chybně vstupní parametry, program to zahlásí a vyžádá si daný vstupní parametr znovu. Funkce: zadani_osetreni_polomeru(), zadani_osetreni_meritka(), zadani_osetreni_pismeneproZobr() - nemají žádné vstupy, výstupem jsou korektní hodnoty.
-   Dále je jak u poledníků, tak i u rovnoběžek vytvořen list hodnot po deseti stupních a prázdný list, do kterého se budou zapisovat výpočty. Jsou provedeny výpočty. U poledníků jsou všechny výpočty konstantní, u rovnoběžek záleží na vstupním parametru zobrazení. Ve funkci je definována podmínka: pokud výsledná hodnota překročí hodnotu jednoho metru, je takováto hodnota nahrazena pomlčkou. Funkce: vypocet_poledniku (R,m), vypocet_rovnobezek(R,m,zobrazeni) - vstupními hodnotami jsou R - poloměr Země, m - měřítko, zobrazení - druh zobrazení(pouze u výpočtu rovnoběžek). Výstupem jsou souřadnice poledníků a rovnoběžek pro vykreslení dané sítě.
+   Nejprve jsou od uživatele vyžádany všechny vstupní parametry a jsou hned ošetřeny před případnými chybami. Pokud uživatel zadá chybně vstupní parametry, program to zahlásí a vyžádá si daný vstupní parametr znovu. 
+   Dále je jak u poledníků, tak i u rovnoběžek vytvořen list hodnot po deseti stupních a prázdný list, do kterého se budou zapisovat výpočty. Jsou provedeny výpočty. U poledníků jsou všechny výpočty konstantní, u rovnoběžek záleží na vstupním parametru zobrazení. Ve funkci je definována podmínka: pokud výsledná hodnota překročí hodnotu jednoho metru, je takováto hodnota nahrazena pomlčkou. 
    Na závěr program vypíše souřadnice poledníků a rovnoběžek. 
