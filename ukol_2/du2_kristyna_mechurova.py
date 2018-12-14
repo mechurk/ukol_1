@@ -2,6 +2,8 @@ import geojson
 import json
 import sys
 
+"""Dělení adresních bodů"""
+
 input_file= "body_adresy.geojson"#sys.argv[1]
 out_file = "body_adresy_vystup.geojson"#sys.argv[2]
 
