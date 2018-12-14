@@ -25,13 +25,13 @@ def calc_bbox(points):
     maxy = float("-inf")
     for point in points:
         if point[1] < minx:
-            minx = point[1]-0.000000001
+            minx = point[1] - 0.000000001
         if point[1] > maxx:
-            maxx = point[1]+0.000000001
+            maxx = point[1] + 0.000000001
         if point[2] < miny:
-            miny = point[2]-0.000000001
+            miny = point[2] - 0.000000001
         if point[2] > maxy:
-            maxy = point[2]+0.000000001
+            maxy = point[2] + 0.000000001
     bbox = [minx, miny, maxx, maxy]
     print(minx, miny, maxx, maxy)
     return (bbox)
@@ -81,20 +81,14 @@ def bottomRight(box):
 box = calc_bbox(points)
 processQuarter(points, box, "")
 print(points)
-"""
-for issues in gj['features']:
-    if issues ['properties'] ['@id']== points[0]:
-        with open(out_file, 'w') as out:
-            gj.dump (gj,points [3])
-"""
+
 for issue in gj['features']:
     for point in points:
-        if issue ['properties'] ['@id']== point[0]:
-
+        if issue['properties']['@id'] == point[0]:
             issue['properties']['cluster_id'] = point[3]
-            #print(point)
-            #print(point[3])
+            # print(point)
+            # print(point[3])
 
             break
-with open(out_file, 'w') as out:  # ulozeni vystupniho souboru
+with open(out_file, 'w') as out:
     json.dump(gj, out)
