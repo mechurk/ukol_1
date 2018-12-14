@@ -89,6 +89,7 @@ for issue in gj['features']:
             # print(point)
             # print(point[3])
 
+
             break
 with open(out_file, 'w') as out:
     json.dump(gj, out)
