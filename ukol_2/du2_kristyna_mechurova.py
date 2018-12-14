@@ -1,81 +1,81 @@
 import geojson
 
-with open ("body_adresy.geojson",encoding='utf-8') as f:
-    gj=geojson.load(f)
+with open("body_adresy.geojson", encoding='utf-8') as f:
+    gj = geojson.load(f)
 
-adresy=gj['features'][0]
-print (adresy)
+adress = gj['features'][0]
+print(adress)
 
-body=[]
-for polozky in gj ['features']:
-    ID= polozky['properties']['@id']
-    souradnice=polozky ['geometry']['coordinates']
-    body.append ([ID, souradnice[0], souradnice [1]])
+points = []
+for issues in gj['features']:
+    ID = issues['properties']['@id']
+    coord = issues['geometry']['coordinates']
+    points.append([ID, coord[0], coord[1]])
 
-print (body)
+print(points)
 
 
-def calc_bbox(body):
+def calc_bbox(points):
     minx = float("inf")
     miny = float("inf")
     maxx = float("-inf")
     maxy = float("-inf")
-    for bod in body:
-        if bod [1] < minx:
-            minx = bod [1]
-        if bod [1]> maxx:
-            maxx = bod [1]
-        if bod [2]< miny:
-            miny = bod [2]
-        if bod [2] > maxy:
-            maxy = bod [2]
-    bbox= [minx, miny,maxx, maxy]
-    print (minx,miny,maxx,maxy)
+    for point in points:
+        if point[1] < minx:
+            minx = point[1]
+        if point[1] > maxx:
+            maxx = point[1]
+        if point[2] < miny:
+            miny = point[2]
+        if point[2] > maxy:
+            maxy = point[2]
+    bbox = [minx, miny, maxx, maxy]
+    print(minx, miny, maxx, maxy)
     return (bbox)
 
-#bbox=calc_bbox(body)
 
-
-
-
-def processQuarter(body,box,cluster_id):
-    pointsInThisBox = pointsInBox(body,box)
+def processQuarter(points, box, cluster_id):
+    pointsInThisBox = pointsInBox(points, box)
     print(pointsInThisBox)
     if (len(pointsInThisBox) < 50):
         for point in pointsInThisBox:
             point.append(int(cluster_id))
         return
-    else :
-        processQuarter(body,topLeft(box),cluster_id+"1")
-        processQuarter(body,topRight(box),cluster_id+"2")
-        processQuarter(body,bottomLeft(box),cluster_id+"3")
-        processQuarter(body,bottomRight(box),cluster_id+"4")
+    else:
+        processQuarter(points, topLeft(box), cluster_id + "1")
+        processQuarter(points, topRight(box), cluster_id + "2")
+        processQuarter(points, bottomLeft(box), cluster_id + "3")
+        processQuarter(points, bottomRight(box), cluster_id + "4")
 
 
+def pointsInBox(body, bbox):
+    return [point for point in body if bbox[0] <= point[1] < bbox[2] and bbox[1] <= point[2] < bbox[3]]
 
-def pointsInBox(body,bbox):
-    return [point for point in body if bbox[0] <= point [1] < bbox[2] and bbox[1] <= point[2] < bbox[3] ]
 
 def topLeft(box):
-    stred = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
-    qbox=[box[0], stred[1], stred[0], box[3]]
+    middle = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
+    qbox = [box[0], middle[1], middle[0], box[3]]
     return qbox
+
+
 def topRight(box):
-    stred = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
-    qbox=[stred[0], stred[1], box[2], box[3]]
+    middle = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
+    qbox = [middle[0], middle[1], box[2], box[3]]
     return qbox
+
+
 def bottomLeft(box):
-    stred = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
-    qbox=[box[0], box[1], stred[0], stred[1]]
+    middle = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
+    qbox = [box[0], box[1], middle[0], middle[1]]
     return qbox
+
+
 def bottomRight(box):
-    stred = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
-    qbox=[stred[0], box[1],box[2], stred[1]]
+    middle = [(box[2] + box[0]) / 2, (box[3] + box[1]) / 2]
+    qbox = [middle[0], box[1], box[2], middle[1]]
     return qbox
 
 
-box=calc_bbox(body)
-processQuarter(body,box,"")
-print (body)
-
-
+box = calc_bbox(points)
+processQuarter(points, box, "")
+print(points)
