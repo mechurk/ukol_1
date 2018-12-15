@@ -67,10 +67,10 @@ def processQuarter(points, box, cluster_id):
             point.append(int(cluster_id))
         return
     else:
-        processQuarter(points, topLeft(box), cluster_id + "1")
-        processQuarter(points, topRight(box), cluster_id + "2")
-        processQuarter(points, bottomLeft(box), cluster_id + "3")
-        processQuarter(points, bottomRight(box), cluster_id + "4")
+        processQuarter(pointsInThisBox, topLeft(box), cluster_id + "1")
+        processQuarter(pointsInThisBox, topRight(box), cluster_id + "2")
+        processQuarter(pointsInThisBox, bottomLeft(box), cluster_id + "3")
+        processQuarter(pointsInThisBox, bottomRight(box), cluster_id + "4")
 
 
 def pointsInBox(body, bbox):
